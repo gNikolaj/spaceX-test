@@ -1,20 +1,23 @@
 import React from 'react';
 import Header from "./components/Header/Header";
 import './styles.css';
-import HomeSlider from "./components/Sliders/HomeSlider";
-import ExploreToursBtn from "./components/Buttons/ExploreToursBtn";
-import PopularToursSlider from "./components/Sliders/PopularToursSlider";
+
+import Home from "./components/Pages/Home";
+import Favourites from "./components/Pages/Favourites";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 function App() {
     return (
-        <div className="App">
-            <div style={{position: 'relative'}}>
-                <HomeSlider/>
+        <BrowserRouter>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/home" element={<Home/>}/>
+                    <Route path="/favourites" element={<Favourites/>}/>
+                </Routes>
                 <Header/>
-                <ExploreToursBtn/>
             </div>
-            <PopularToursSlider/>
-        </div>
+        </BrowserRouter>
     );
 }
 

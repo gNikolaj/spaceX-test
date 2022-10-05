@@ -1,8 +1,10 @@
 import React from 'react';
-import LogoImg from '../../assets/img/logo.png';
-import FavImg from '../../assets/img/favourite.png';
 import styled from "styled-components";
 import SignInButton from "../Buttons/SignIn/SignInButton";
+
+import LogoImg from '../../assets/img/logo.png';
+import FavImg from '../../assets/img/favourite.png';
+import {Link} from "react-router-dom";
 
 const HeaderWithStyles = styled.header`
   background-color: rgba(30, 30, 30, 48%);
@@ -49,17 +51,17 @@ const Favourite = styled.button`
 const Header = () => {
     return (
         <HeaderWithStyles>
-            <Logo src={LogoImg} alt="logo"/>
+            <Link to="/home"><Logo src={LogoImg} alt="logo"/></Link>
             <NavBar >
                 <List >
-                    <li>HOME</li>
+                    <li><Link to="/home">HOME</Link></li>
                     <li>TOURS</li>
                     <li>ABOUT</li>
                     <li>HELP</li>
                 </List>
             </NavBar>
             <Favourite>
-                <img src={FavImg} alt="favIcon"/>
+                <Link to="/favourites"><img src={FavImg} alt="favIcon"/></Link>
             </Favourite>
             <SignInButton/>
         </HeaderWithStyles>

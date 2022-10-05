@@ -6,7 +6,7 @@ import SlideImg from '../../assets/img/expPic.png'
 const Button = styled.button`
   position: absolute;
   left: 50%;
-  bottom: 32px;
+  top: 668px;
   transform: translateX(-50%);
   display: flex;
   width: 231px;
