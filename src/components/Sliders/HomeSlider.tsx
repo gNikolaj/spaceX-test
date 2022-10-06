@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 
 import Slide1 from '../../assets/img/baner1.png';
 import Slide2 from '../../assets/img/baner2.png';
 import Slide3 from '../../assets/img/baner3.png';
 
+const slidesArr = [Slide1, Slide2, Slide3];
 
 const Slider = styled.ul`
   img {
@@ -13,16 +14,24 @@ const Slider = styled.ul`
     object-fit: cover;
     filter: brightness(0.4);
   }
-  label {
-    background: black;
-  }
 `
 
 const Inputs = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  width: 88px;
+  height: 24px;
+  top: 413px;
+  
+  left: 47.5%;
+  transform: translateX(-50%);
+  
 `
 
 const Headline = styled.div`
@@ -56,25 +65,33 @@ const Headline = styled.div`
 `
 
 const HomeSlider = () => {
+    const [sliderImg, setSliderImg] = useState(slidesArr[0]);
+
+    const handleClick = (e:any) => {
+        setSliderImg(slidesArr[+e.target.value]);
+        console.log(+e.target.value);
+    }
 
     return (
             <Slider>
                 <li>
-                    <img src={Slide1} alt="slide1"/>
+                    <img src={sliderImg} alt="slide1"/>
                 </li>
-                {/*<li>*/}
-                {/*    <img src={Slide2} alt="slide2"/>*/}
-                {/*</li>*/}
-                {/*<li>*/}
-                {/*    <img src={Slide3} alt="slide3"/>*/}
-                {/*</li>*/}
-                <Inputs>
-
-                </Inputs>
                 <Headline>
                     <h2>THE SPACE IS WAITING FOR</h2>
                     <h1>YOU</h1>
                 </Headline>
+                <Inputs>
+                    <label htmlFor="">
+                        <input type="radio" value="0" name="firstSlider" onClick={handleClick}/>
+                    </label>
+                    <label htmlFor="">
+                        <input type="radio" value="1" name="firstSlider" onClick={handleClick}/>
+                    </label>
+                    <label htmlFor="">
+                        <input type="radio" value="2" name="firstSlider" onClick={handleClick}/>
+                    </label>
+                </Inputs>
             </Slider>
 
     );

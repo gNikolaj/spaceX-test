@@ -20,6 +20,8 @@ const Button = styled.button`
 `
 
 const ExploreToursBtn = () => {
+
+
     return (
         <Button>
             <img src={SlideImg} alt="next"/>

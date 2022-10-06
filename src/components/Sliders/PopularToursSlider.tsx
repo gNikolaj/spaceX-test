@@ -14,6 +14,7 @@ const Slider = styled.div`
   
   width: 1281px;
   height: 720px;
+  
 `
 
 const HeaderContext = styled.div`
@@ -47,7 +48,9 @@ const ToursContainer = styled.div`
   
 `
 
+
 const PopularToursSlider = () => {
+
     return (
         <Slider>
             <HeaderContext>
