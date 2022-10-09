@@ -2,19 +2,22 @@ import React from 'react';
 import styled from "styled-components";
 
 import IMG from '../assets/img/baner2.png';
-import FavouritesButton from "./Buttons/FavouritesButton";
-import BuyButton from "./Buttons/PopularTours/BuyButton";
+import FavouritesButton from "./Buttons/Tour/FavouritesButton";
+import BuyButton from "./Buttons/Tour/BuyButton";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {checkPage} from "../atoms";
+import DeleteButton from "./Buttons/Tour/DeleteButton";
 
 const Section = styled.div`
   width: 411px;
   height: 572px;
   border: 1px solid #D3EAFF;
-  
 `
 
 const Picture = styled.img`
   height: 296px;
   object-fit: cover;
+  margin: 0 auto;
 `
 
 const ButtonsContainer = styled.div`
@@ -44,7 +47,6 @@ const TextBox = styled.div`
   
   h3 {
     width: 347px;
-    height: 29px;
 
     font-family: 'Syne',serif;
     font-style: normal;
@@ -69,17 +71,27 @@ const TextBox = styled.div`
   }
 `
 
-const Tour = () => {
+interface TourProps {
+    tourCard:any
+}
+
+const Tour = ({tourCard}: TourProps) => {
+    const activeFavPage = useRecoilValue(checkPage);
+
+    const title = tourCard.title;
+    const subtitle = tourCard.flight.mission_name;
+    const image = tourCard.flight.links.flickr_images[0];
+
     return (
         <Section>
-            <Picture src={IMG} alt="someImg"/>
+            <Picture src={image} alt="someImg"/>
             <TextBox>
-                <h3>Extraordinary tour</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                <h3>{title}</h3>
+                <p>{subtitle}</p>
             </TextBox>
             <ButtonsContainer>
                 <BuyButton/>
-                <FavouritesButton/>
+                {activeFavPage ? <FavouritesButton tourCard={tourCard}/> : <DeleteButton tourCard={tourCard}/>}
             </ButtonsContainer>
 
         </Section>

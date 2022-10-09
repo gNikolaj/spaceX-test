@@ -2,7 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 
 import IMG from '../../assets/img/baner3.png';
-import PopularToursSlider from "../Sliders/PopularToursSlider";
+import {useRecoilValue} from "recoil";
+import {favouriteTours} from "../../atoms";
+import FavouritesSlider from "../Sliders/FavouritesSlider";
 
 const FavouritesPage = styled.div`
   position: relative;
@@ -40,13 +42,14 @@ const Headline = styled.h1`
 `
 
 const Favourites = () => {
+
     return (
         <FavouritesPage>
             <ImageContainer>
                 <img src={IMG} alt="img"/>
                 <Headline>favourites</Headline>
             </ImageContainer>
-            <PopularToursSlider/>
+            <FavouritesSlider/>
         </FavouritesPage>
     );
 };

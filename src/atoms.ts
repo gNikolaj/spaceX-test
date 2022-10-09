@@ -1,11 +1,11 @@
 import {atom} from "recoil";
 
-export const onClickPopular = atom({
-    key: 'onClickPopular',
-    default: false
-})
-
 export const favouriteTours = atom({
     key: 'favouriteTours',
-    default: []
+    default: [] as any[]
+})
+
+export const checkPage = atom({
+    key: 'checkPage',
+    default: true
 })

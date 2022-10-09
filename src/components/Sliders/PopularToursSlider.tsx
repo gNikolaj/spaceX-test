@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import Tour from "../Tour";
-import LeftButton from "../Buttons/PopularTours/LeftButton";
-import RightButton from "../Buttons/PopularTours/RightButton";
+import LeftButton from "../Buttons/Slider/LeftButton";
+import RightButton from "../Buttons/Slider/RightButton";
 
-const Slider = styled.div`
+export const Slider = styled.div`
   
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ const Slider = styled.div`
   gap: 40px;
   margin: 103px auto;
   
-  width: 1281px;
+  max-width: 1281px;
   height: 720px;
   
 `
@@ -37,37 +37,38 @@ const PopularHeadline = styled.h3`
   text-transform: uppercase;
 `
 
-const ToursContainer = styled.div`
+export const ToursContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   
   padding: 0;
   gap: 24px;
   
   height: 572px;
-  
 `
 
+interface TourSliderProps {
+    data: Array<object>
+}
 
-const PopularToursSlider = () => {
+const PopularToursSlider = ({data}: TourSliderProps) => {
+    const [firstIndex, setFirstIndex] = useState(0);
+    const currentSlides = data.slice(firstIndex, firstIndex+3);
 
     return (
-        <Slider>
+        <Slider id="popularTours">
             <HeaderContext>
                 <PopularHeadline>popular tours</PopularHeadline>
                 <div>
-                    <LeftButton/>
-                    <RightButton/>
+                    <LeftButton currentIndex={firstIndex} changeIndex={setFirstIndex}/>
+                    <RightButton currentIndex={firstIndex} changeIndex={setFirstIndex} maxIndex={data.length}/>
                 </div>
             </HeaderContext>
             <ToursContainer>
-                <Tour/>
-                <Tour/>
-                <Tour/>
+                {currentSlides.map((item:any) => (
+                    <Tour tourCard={item} key={item.id}/>
+                ))}
             </ToursContainer>
-            <div>
-
-            </div>
         </Slider>
     );
 };

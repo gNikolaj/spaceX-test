@@ -27,10 +27,11 @@ const Inputs = styled.div`
 
   width: 88px;
   height: 24px;
-  top: 413px;
+  top: 430px;
   
   left: 47.5%;
   transform: translateX(-50%);
+  
   
 `
 
@@ -83,13 +84,16 @@ const HomeSlider = () => {
                 </Headline>
                 <Inputs>
                     <label htmlFor="">
-                        <input type="radio" value="0" name="firstSlider" onClick={handleClick}/>
+                        <input type="radio" value="0" name="firstSlider" defaultChecked onClick={handleClick}/>
+                        <span/>
                     </label>
                     <label htmlFor="">
                         <input type="radio" value="1" name="firstSlider" onClick={handleClick}/>
+                        <span/>
                     </label>
                     <label htmlFor="">
                         <input type="radio" value="2" name="firstSlider" onClick={handleClick}/>
+                        <span/>
                     </label>
                 </Inputs>
             </Slider>

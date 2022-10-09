@@ -5,16 +5,24 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   border: none;
   width: 278px;
   height: 53px;
   background: #D3EAFF;
-  
+
+  :hover {
+    cursor: pointer;
+  }
+
+  :active {
+    background: #bed5e8;
+  }
+
   h3 {
     width: 54px;
     height: 29px;
-    font-family: 'Syne',serif;
+    font-family: 'Syne', serif;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;

@@ -1,23 +1,28 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+
 import styled from "styled-components";
+import {LOAD_TOURS} from "../../graphQL/Queries";
+
+import {useQuery} from "@apollo/client";
+
 import HomeSlider from "../Sliders/HomeSlider";
 import ExploreToursBtn from "../Buttons/ExploreToursBtn";
 import PopularToursSlider from "../Sliders/PopularToursSlider";
-import {useQuery} from "@apollo/client";
-import {LOAD_TOURS} from "../../graphQL/Queries";
-import {List} from "@mui/material";
 
 const HomePage = styled.div`
   position: relative;
 `
 
 const Home = () => {
-    const {error, loading, data} = useQuery(LOAD_TOURS);
+    const {loading, data} = useQuery(LOAD_TOURS);
+    const [filteredTours, setFilteredTours] = useState([]);
 
     useEffect(() => {
         if (data !== undefined) {
-            let res = data['histories'].filter((item:any) => item.flight !== null);
-            console.log(res);
+            const {histories} = data;
+            const res = histories.filter((item: any) => item.flight !== null
+                && item.flight.links.flickr_images.length !== 0);
+            setFilteredTours(res);
         }
 
     }, [data]);
@@ -27,7 +32,7 @@ const Home = () => {
         <HomePage>
             <HomeSlider/>
             <ExploreToursBtn/>
-            {!loading && <PopularToursSlider/>}
+            {!loading && <PopularToursSlider data={filteredTours}/>}
         </HomePage>
     );
 };

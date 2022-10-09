@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {RecoilRoot} from "recoil";
 
-import Header from "./components/Header/Header";
+import Header from "./components/Header";
 import Home from "./components/Pages/Home";
 import Favourites from "./components/Pages/Favourites";
 

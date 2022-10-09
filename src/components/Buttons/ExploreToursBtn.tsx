@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 
-import SlideImg from '../../assets/img/expPic.png'
+import SlideImg from '../../assets/img/buttons/expPic.png'
+import ScrollIntoView from "react-scroll-into-view";
 
 const Button = styled.button`
   position: absolute;
@@ -23,9 +24,12 @@ const ExploreToursBtn = () => {
 
 
     return (
-        <Button>
-            <img src={SlideImg} alt="next"/>
-        </Button>
+        <ScrollIntoView selector="#popularTours">
+            <Button>
+                <img src={SlideImg} alt="next"/>
+            </Button>
+        </ScrollIntoView>
+
     );
 };
 
