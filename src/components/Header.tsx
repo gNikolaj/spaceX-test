@@ -45,6 +45,7 @@ const List = styled.ul`
 
   a:link {
     text-decoration: none;
+    color: rgba(255, 255, 255, 1);
   }
 
   a:visited {
