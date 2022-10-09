@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
-import styled from "styled-components";
+import {useQuery} from "@apollo/client";
 import {LOAD_TOURS} from "../../graphQL/Queries";
 
-import {useQuery} from "@apollo/client";
+import styled from "styled-components";
 
 import HomeSlider from "../Sliders/HomeSlider";
 import ExploreToursBtn from "../Buttons/ExploreToursBtn";

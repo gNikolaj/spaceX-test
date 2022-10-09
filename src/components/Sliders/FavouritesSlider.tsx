@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {Slider, ToursContainer} from "./PopularToursSlider";
-import styled from "styled-components";
-import {useRecoilState} from "recoil";
+
+import {useRecoilValue} from "recoil";
 import {favouriteTours} from "../../atoms";
+
+import styled from "styled-components";
+import {Slider, ToursContainer} from "./PopularToursSlider";
+
 import Tour from "../Tour";
 import LeftButton from "../Buttons/Slider/LeftButton";
 import RightButton from "../Buttons/Slider/RightButton";
@@ -14,22 +17,22 @@ const HeaderContext = styled.div`
 `
 
 const FavouritesSlider = () => {
-    const [favourites, setFavourites] = useRecoilState(favouriteTours);
+    const favourites = useRecoilValue(favouriteTours);
 
     const [firstIndex, setFirstIndex] = useState(0);
-    const currentSlides = favourites.slice(firstIndex, firstIndex+3);
+    const currentSlides = favourites.slice(firstIndex, firstIndex + 3);
 
     return (
         <Slider>
             <HeaderContext>
-                <ClearAllButton />
+                <ClearAllButton/>
                 <div>
                     <LeftButton currentIndex={firstIndex} changeIndex={setFirstIndex}/>
                     <RightButton currentIndex={firstIndex} changeIndex={setFirstIndex} maxIndex={favourites.length}/>
                 </div>
             </HeaderContext>
             <ToursContainer>
-                {currentSlides.map((item:any) => (
+                {currentSlides.map((item: any) => (
                     <Tour tourCard={item} key={item.id}/>
                 ))}
             </ToursContainer>

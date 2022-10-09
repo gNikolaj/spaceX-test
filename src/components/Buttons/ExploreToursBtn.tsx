@@ -1,8 +1,10 @@
 import React from 'react';
+
+import ScrollIntoView from "react-scroll-into-view";
+
 import styled from "styled-components";
 
 import SlideImg from '../../assets/img/buttons/expPic.png'
-import ScrollIntoView from "react-scroll-into-view";
 
 const Button = styled.button`
   position: absolute;
@@ -14,22 +16,19 @@ const Button = styled.button`
 
   background: none;
   border: none;
-  
+
   :hover {
     cursor: pointer;
   }
 `
 
 const ExploreToursBtn = () => {
-
-
     return (
         <ScrollIntoView selector="#popularTours">
             <Button>
                 <img src={SlideImg} alt="next"/>
             </Button>
         </ScrollIntoView>
-
     );
 };
 

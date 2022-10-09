@@ -1,20 +1,22 @@
 import React, {useState} from 'react';
+
 import styled from "styled-components";
+
 import Tour from "../Tour";
 import LeftButton from "../Buttons/Slider/LeftButton";
 import RightButton from "../Buttons/Slider/RightButton";
 
 export const Slider = styled.div`
-  
+
   display: flex;
   flex-direction: column;
   padding: 0;
   gap: 40px;
   margin: 103px auto;
-  
+
   max-width: 1281px;
   height: 720px;
-  
+
 `
 
 const HeaderContext = styled.div`
@@ -29,7 +31,7 @@ const PopularHeadline = styled.h3`
   width: 465px;
   height: 38px;
 
-  font-family: 'Syne',serif;
+  font-family: 'Syne', serif;
   font-style: normal;
   font-weight: 800;
   font-size: 32px;
@@ -40,10 +42,10 @@ const PopularHeadline = styled.h3`
 export const ToursContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  
+
   padding: 0;
   gap: 24px;
-  
+
   height: 572px;
 `
 
@@ -53,7 +55,7 @@ interface TourSliderProps {
 
 const PopularToursSlider = ({data}: TourSliderProps) => {
     const [firstIndex, setFirstIndex] = useState(0);
-    const currentSlides = data.slice(firstIndex, firstIndex+3);
+    const currentSlides = data.slice(firstIndex, firstIndex + 3);
 
     return (
         <Slider id="popularTours">
@@ -65,7 +67,7 @@ const PopularToursSlider = ({data}: TourSliderProps) => {
                 </div>
             </HeaderContext>
             <ToursContainer>
-                {currentSlides.map((item:any) => (
+                {currentSlides.map((item: any) => (
                     <Tour tourCard={item} key={item.id}/>
                 ))}
             </ToursContainer>

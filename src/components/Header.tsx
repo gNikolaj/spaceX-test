@@ -1,13 +1,16 @@
 import React from 'react';
+import {Link} from "react-router-dom";
+
+import {useRecoilState} from "recoil";
+import {checkPage} from "../atoms";
+
 import styled from "styled-components";
+
 import SignInButton from "./Buttons/SignInButton";
 
 import LogoImg from '../assets/img/logo.png';
 import FavImg from '../assets/img/buttons/favourite.png';
 import FavActiveImg from '../assets/img/buttons/activeFavButton.png'
-import {Link} from "react-router-dom";
-import {useRecoilState} from "recoil";
-import {checkPage} from "../atoms";
 
 const HeaderWithStyles = styled.header`
   background-color: rgba(30, 30, 30, 48%);
@@ -39,19 +42,19 @@ const List = styled.ul`
   flex-direction: row;
   gap: 32px;
   color: rgba(255, 255, 255, 1);
-  
+
   a:link {
     text-decoration: none;
   }
-  
+
   a:visited {
     color: rgba(255, 255, 255, 1);
   }
-  
+
   a:hover {
     text-decoration: underline;
   }
-  
+
   li:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -62,7 +65,7 @@ const Favourite = styled.button`
   position: absolute;
   right: 300px;
   top: 13px;
-  
+
   background: none;
   border: none;
 `
@@ -72,16 +75,22 @@ const Header = () => {
 
     return (
         <HeaderWithStyles>
-            <Link to="/home"><Logo src={LogoImg} alt="logo" onClick={() => {setActiveFavPage(true)}}/></Link>
-            <NavBar >
-                <List >
-                    <li><Link to="/home" onClick={() => {setActiveFavPage(true)}}>HOME</Link></li>
+            <Link to="/home"><Logo src={LogoImg} alt="logo" onClick={() => {
+                setActiveFavPage(true)
+            }}/></Link>
+            <NavBar>
+                <List>
+                    <li><Link to="/home" onClick={() => {
+                        setActiveFavPage(true)
+                    }}>HOME</Link></li>
                     <li>TOURS</li>
                     <li>ABOUT</li>
                     <li>HELP</li>
                 </List>
             </NavBar>
-            <Favourite onClick={() => {setActiveFavPage(false)}}>
+            <Favourite onClick={() => {
+                setActiveFavPage(false)
+            }}>
                 <Link to="/favourites"><img src={activeFavPage ? FavImg : FavActiveImg} alt="favIcon"/></Link>
             </Favourite>
             <SignInButton/>

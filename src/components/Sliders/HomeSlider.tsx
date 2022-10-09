@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 
 import Slide1 from '../../assets/img/baner1.png';
@@ -22,41 +22,41 @@ const Inputs = styled.div`
   align-items: center;
   padding: 0;
   gap: 8px;
-  
+
   position: absolute;
 
   width: 88px;
   height: 24px;
   top: 430px;
-  
+
   left: 47.5%;
   transform: translateX(-50%);
-  
-  
+
+
 `
 
 const Headline = styled.div`
   position: absolute;
-  
+
   top: 232px;
   left: 50%;
   transform: translateX(-50%);
   color: white;
   width: 1200px;
-  
+
   text-align: center;
   align-items: center;
 
-  font-family: 'Syne',serif;
+  font-family: 'Syne', serif;
   font-style: normal;
-  
+
   h1 {
     font-size: 310px;
     line-height: 310px;
     font-weight: 800;
 
   }
-  
+
   h2 {
     height: 58px;
     font-size: 48px;
@@ -68,36 +68,35 @@ const Headline = styled.div`
 const HomeSlider = () => {
     const [sliderImg, setSliderImg] = useState(slidesArr[0]);
 
-    const handleClick = (e:any) => {
+    const handleClick = (e: any) => {
         setSliderImg(slidesArr[+e.target.value]);
         console.log(+e.target.value);
     }
 
     return (
-            <Slider>
-                <li>
-                    <img src={sliderImg} alt="slide1"/>
-                </li>
-                <Headline>
-                    <h2>THE SPACE IS WAITING FOR</h2>
-                    <h1>YOU</h1>
-                </Headline>
-                <Inputs>
-                    <label htmlFor="">
-                        <input type="radio" value="0" name="firstSlider" defaultChecked onClick={handleClick}/>
-                        <span/>
-                    </label>
-                    <label htmlFor="">
-                        <input type="radio" value="1" name="firstSlider" onClick={handleClick}/>
-                        <span/>
-                    </label>
-                    <label htmlFor="">
-                        <input type="radio" value="2" name="firstSlider" onClick={handleClick}/>
-                        <span/>
-                    </label>
-                </Inputs>
-            </Slider>
-
+        <Slider>
+            <li>
+                <img src={sliderImg} alt="slide1"/>
+            </li>
+            <Headline>
+                <h2>THE SPACE IS WAITING FOR</h2>
+                <h1>YOU</h1>
+            </Headline>
+            <Inputs>
+                <label htmlFor="">
+                    <input type="radio" value="0" name="firstSlider" defaultChecked onClick={handleClick}/>
+                    <span/>
+                </label>
+                <label htmlFor="">
+                    <input type="radio" value="1" name="firstSlider" onClick={handleClick}/>
+                    <span/>
+                </label>
+                <label htmlFor="">
+                    <input type="radio" value="2" name="firstSlider" onClick={handleClick}/>
+                    <span/>
+                </label>
+            </Inputs>
+        </Slider>
     );
 };
 

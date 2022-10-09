@@ -1,10 +1,10 @@
 import React from 'react';
+
 import styled from "styled-components";
 
-import IMG from '../../assets/img/baner3.png';
-import {useRecoilValue} from "recoil";
-import {favouriteTours} from "../../atoms";
 import FavouritesSlider from "../Sliders/FavouritesSlider";
+
+import IMG from '../../assets/img/baner3.png';
 
 const FavouritesPage = styled.div`
   position: relative;
@@ -28,11 +28,11 @@ const Headline = styled.h1`
   width: 513px;
   height: 58px;
   top: 220px;
-  
+
   left: 50%;
   transform: translateX(-50%);
 
-  font-family: 'Syne',serif;
+  font-family: 'Syne', serif;
   font-style: normal;
   font-weight: 800;
   font-size: 48px;
